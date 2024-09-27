@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import { selectPeers, useHMSActions, useHMSStore } from '@100mslive/react-sdk';
 import { Tooltip } from '../../../Tooltip';
@@ -13,6 +14,8 @@ const EnButton = () => {
         (peer.roleName === 'interpreter-fr' && peer.audioTrack)
       ) {
         hmsActions.setVolume(0, peer.audioTrack);
+      } else if ((peer.roleName === 'host' && peer.audioTrack) || (peer.roleName === 'guest' && peer.audioTrack)) {
+        hmsActions.setVolume(100, peer.audioTrack);
       }
     }
   };

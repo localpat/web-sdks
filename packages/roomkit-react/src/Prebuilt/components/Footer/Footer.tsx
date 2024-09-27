@@ -13,6 +13,7 @@ import Int2EnButton from '../Interpreting/Int2En';
 import Int2FrButton from '../Interpreting/Int2Fr';
 import EnButton from '../Languages/En';
 import FrButton from '../Languages/Fr';
+import MainButton from '../Languages/Main';
 // @ts-ignore: No implicit Any
 import { LeaveRoom } from '../Leave/LeaveRoom';
 // @ts-ignore: No implicit Any
@@ -91,6 +92,7 @@ export const Footer = ({
           <>
             <EnButton />
             <FrButton />
+            <MainButton />
           </>
         ) : null}
       </AppFooter.Left>
