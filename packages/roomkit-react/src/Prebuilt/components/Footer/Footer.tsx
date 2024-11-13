@@ -2,6 +2,10 @@ import React, { useEffect } from 'react';
 import { useMedia } from 'react-use';
 import { ConferencingScreen } from '@100mslive/types-prebuilt';
 import { Chat_ChatState } from '@100mslive/types-prebuilt/elements/chat';
+import { selectLocalPeerRole, useHMSStore } from '@100mslive/react-sdk';
+// intepreting elements
+import Int2EnButton from './Interpreting/Int2En';
+import Int2FrButton from './Interpreting/Int2Fr';
 import { config as cssConfig, Footer as AppFooter } from '../../..';
 // @ts-ignore: No implicit Any
 import { AudioVideoToggle } from '../AudioVideoToggle';
@@ -29,6 +33,8 @@ import { useIsSidepaneTypeOpen, useSidepaneToggle } from '../AppData/useSidepane
 import { useShowPolls } from '../AppData/useUISettings';
 // @ts-ignore: No implicit Any
 import { SIDE_PANE_OPTIONS } from '../../common/constants';
+// import EnButton from "./Languages/En";
+// import FrButton from "./Languages/Fr";
 
 export const Footer = ({
   screenType,
@@ -44,6 +50,7 @@ export const Footer = ({
   const isChatOpen = useIsSidepaneTypeOpen(SIDE_PANE_OPTIONS.CHAT);
   const toggleChat = useSidepaneToggle(SIDE_PANE_OPTIONS.CHAT);
   const { showPolls } = useShowPolls();
+  const role = useHMSStore(selectLocalPeerRole);
 
   useEffect(() => {
     if (!isChatOpen && openByDefault) {
@@ -77,6 +84,18 @@ export const Footer = ({
         {isMobile ? <LeaveRoom screenType={screenType} /> : null}
         <AudioVideoToggle />
         {!isMobile && elements.virtual_background ? <VBToggle /> : null}
+        {role?.name === 'interpreter-en' || role?.name === 'interpreter-fr' ? (
+          <>
+            <Int2EnButton />
+            <Int2FrButton />
+          </>
+        ) : null}
+        {/* {role?.name === "listener-en" || role?.name === "listener-fr" ? (
+          <>
+            <EnButton />
+            <FrButton />
+          </>
+        ) : null} */}
       </AppFooter.Left>
       <AppFooter.Center
         css={{
