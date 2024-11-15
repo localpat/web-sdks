@@ -12,7 +12,7 @@ import { Flex, Text } from '../../..';
 // @ts-ignore: No implicit Any
 import { PreviewControls, PreviewTile } from '../Preview/PreviewJoin';
 import { RequestPrompt } from './RequestPrompt';
-import { useRoomLayoutPreviewScreen } from '../../provider/roomLayoutProvider/hooks/useRoomLayoutScreen';
+//import { useRoomLayoutPreviewScreen } from '../../provider/roomLayoutProvider/hooks/useRoomLayoutScreen';
 import { useMyMetadata } from '../hooks/useMetadata';
 // @ts-ignore: No implicit Any
 import { ROLE_CHANGE_DECLINED } from '../../common/constants';
@@ -25,8 +25,6 @@ export const RoleChangeRequestModal = () => {
   const roleChangeRequest = useHMSStore(selectRoleChangeRequest);
   const name = useHMSStore(selectLocalPeerName);
   const { sendEvent } = useCustomEvent({ type: ROLE_CHANGE_DECLINED });
-  const { elements = {} } = useRoomLayoutPreviewScreen();
-  const { virtual_background } = elements || {};
 
   useEffect(() => {
     if (!roleChangeRequest?.role) {
@@ -65,7 +63,7 @@ export const RoleChangeRequestModal = () => {
       >
         <PreviewTile name={name || ''} />
 
-        <PreviewControls hideSettings={true} vbEnabled={!!virtual_background} />
+        <PreviewControls hideSettings={true} />
       </Flex>
     </>
   );

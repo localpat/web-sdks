@@ -4,7 +4,6 @@ import {
   HMSRoomState,
   selectAppData,
   selectIsLocalVideoEnabled,
-  selectIsVBEnabled,
   selectLocalPeer,
   selectRoomState,
   selectVideoTrackByID,
@@ -29,7 +28,7 @@ import FullPageProgress from '../FullPageProgress';
 import { Logo } from '../Header/HeaderComponents';
 // @ts-ignore: No implicit Any
 import SettingsModal from '../Settings/SettingsModal';
-import { VBToggle } from '../VirtualBackground/VBToggle';
+//import { VBToggle } from '../VirtualBackground/VBToggle';
 import PreviewForm from './PreviewForm';
 import { useRoomLayoutPreviewScreen } from '../../provider/roomLayoutProvider/hooks/useRoomLayoutScreen';
 import {
@@ -111,7 +110,7 @@ const PreviewJoin = ({
     join();
   }, [join, name, setPreviewPreference]);
   const { elements = {} } = useRoomLayoutPreviewScreen();
-  const { preview_header: previewHeader = {}, virtual_background } = elements || {};
+  const { preview_header: previewHeader = {} } = elements || {};
   const aspectRatio = useLocalTileAspectRatio();
 
   useEffect(() => {
@@ -160,7 +159,7 @@ const PreviewJoin = ({
         </Flex>
         {toggleVideo ? <PreviewTile name={name} error={previewError} /> : null}
         <Box css={{ w: '100%', maxWidth: `${Math.max(parseFloat(aspectRatio), 1) * 340}px` }}>
-          <PreviewControls hideSettings={!toggleVideo && !toggleAudio} vbEnabled={!!virtual_background} />
+          <PreviewControls hideSettings={!toggleVideo && !toggleAudio} />
           <PreviewForm
             name={name}
             disabled={!!initialName}
@@ -253,9 +252,9 @@ export const PreviewTile = ({ name, error }: { name: string; error?: boolean }) 
   );
 };
 
-export const PreviewControls = ({ hideSettings, vbEnabled }: { hideSettings: boolean; vbEnabled: boolean }) => {
+export const PreviewControls = ({ hideSettings }: { hideSettings: boolean }) => {
   const isMobile = useMedia(cssConfig.media.md);
-  const isVBEnabledForUser = useHMSStore(selectIsVBEnabled);
+
   return (
     <Flex
       justify={hideSettings && isMobile ? 'center' : 'between'}
@@ -266,7 +265,6 @@ export const PreviewControls = ({ hideSettings, vbEnabled }: { hideSettings: boo
     >
       <Flex css={{ gap: '$4' }}>
         <AudioVideoToggle />
-        {vbEnabled && isVBEnabledForUser ? <VBToggle /> : null}
       </Flex>
       <Flex align="center" gap="1">
         {isMobile && <NoiseCancellation iconOnly />}

@@ -8,17 +8,14 @@ import { LayoutMode } from '../components/Settings/LayoutSettings';
 import { SidePaneTabs } from '../components/SidePaneTabs';
 import { TileCustomisationProps } from '../components/VideoLayouts/GridLayout';
 import VideoTile from '../components/VideoTile';
-import { VBPicker } from '../components/VirtualBackground/VBPicker';
+//import { VBPicker } from '../components/VirtualBackground/VBPicker';
 import { Flex } from '../../Layout';
 import { config as cssConfig, styled } from '../../Theme';
 // @ts-ignore: No implicit Any
 import { useSidepaneReset } from '../components/AppData/useSidepane';
 // @ts-ignore: No implicit Any
 import { useUISettings } from '../components/AppData/useUISettings';
-import {
-  useRoomLayoutConferencingScreen,
-  useRoomLayoutPreviewScreen,
-} from '../provider/roomLayoutProvider/hooks/useRoomLayoutScreen';
+import { useRoomLayoutConferencingScreen } from '../provider/roomLayoutProvider/hooks/useRoomLayoutScreen';
 import { useLandscapeHLSStream, useMobileHLSStream } from '../common/hooks';
 import { translateAcross } from '../../utils';
 import { APP_DATA, SIDE_PANE_OPTIONS, UI_SETTINGS } from '../common/constants';
@@ -131,15 +128,15 @@ const SidePane = ({
   const activeScreensharePeerId = useHMSStore(selectAppData(APP_DATA.activeScreensharePeerId));
   const trackId = useHMSStore(selectVideoTrackByPeerID(activeScreensharePeerId))?.id;
   const { elements } = useRoomLayoutConferencingScreen();
-  const { elements: preview_elements } = useRoomLayoutPreviewScreen();
+  // const { elements: preview_elements } = useRoomLayoutPreviewScreen();
   const layoutMode = useUISettings(UI_SETTINGS.layoutMode);
 
   const isLandscapeHLSStream = useLandscapeHLSStream();
   const isMobileHLSStream = useMobileHLSStream();
 
-  const backgroundMedia = preview_elements?.virtual_background?.background_media?.length
-    ? preview_elements?.virtual_background?.background_media
-    : elements?.virtual_background?.background_media || [];
+  // const backgroundMedia = preview_elements?.virtual_background?.background_media?.length
+  //   ? preview_elements?.virtual_background?.background_media
+  //   : elements?.virtual_background?.background_media || [];
 
   const tileLayout = {
     hideParticipantNameOnTile: tileProps?.hide_participant_name_on_tile,
@@ -174,7 +171,7 @@ const SidePane = ({
     ))
     .with(SIDE_PANE_OPTIONS.VB, () => (
       <Wrapper css={{ p: '$10 $6 $10 $10' }} {...commonProps}>
-        <VBPicker backgroundMedia={backgroundMedia} />
+        {/* <VBPicker backgroundMedia={backgroundMedia} /> */}
       </Wrapper>
     ))
     .with(SIDE_PANE_OPTIONS.CHAT, SIDE_PANE_OPTIONS.PARTICIPANTS, () => (

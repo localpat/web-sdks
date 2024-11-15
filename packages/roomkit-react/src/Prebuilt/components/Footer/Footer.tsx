@@ -20,12 +20,12 @@ import { RaiseHand } from '../RaiseHand';
 // @ts-ignore: No implicit Any
 import { ScreenshareToggle } from '../ScreenShareToggle';
 // @ts-ignore: No implicit Any
-import { VBToggle } from '../VirtualBackground/VBToggle';
+//import { VBToggle } from '../VirtualBackground/VBToggle';
 // @ts-ignore: No implicit Any
 import { ChatToggle } from './ChatToggle';
 import { ParticipantCount } from './ParticipantList';
 import { PollsToggle } from './PollsToggle';
-import { WhiteboardToggle } from './WhiteboardToggle';
+//import { WhiteboardToggle } from './WhiteboardToggle';
 import { ConferencingScreenElements } from '../../provider/roomLayoutProvider/hooks/useRoomLayoutScreen';
 // @ts-ignore: No implicit Any
 import { useIsSidepaneTypeOpen, useSidepaneToggle } from '../AppData/useSidepane';
@@ -83,7 +83,7 @@ export const Footer = ({
       >
         {isMobile ? <LeaveRoom screenType={screenType} /> : null}
         <AudioVideoToggle />
-        {!isMobile && elements.virtual_background ? <VBToggle /> : null}
+        {/* {!isMobile && elements.virtual_background ? <VBToggle /> : null} */}
         {role?.name === 'interpreter-en' || role?.name === 'interpreter-fr' ? (
           <>
             <Int2EnButton />
@@ -123,7 +123,7 @@ export const Footer = ({
         )}
       </AppFooter.Center>
       <AppFooter.Right>
-        <WhiteboardToggle />
+        {/* <WhiteboardToggle /> */}
         {showPolls && <PollsToggle />}
         {!isMobile && elements?.chat && <ChatToggle />}
         {elements?.participant_list && <ParticipantCount />}

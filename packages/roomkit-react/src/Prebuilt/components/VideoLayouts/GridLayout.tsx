@@ -12,7 +12,6 @@ import {
 import { EqualProminence } from './EqualProminence';
 import { RoleProminence } from './RoleProminence';
 import { ScreenshareLayout } from './ScreenshareLayout';
-import { WhiteboardLayout } from './WhiteboardLayout';
 // @ts-ignore: No implicit Any
 import { usePinnedTrack, useSetAppDataByKey } from '../AppData/useUISettings';
 import { VideoTileContext } from '../hooks/useVideoTileLayout';
@@ -70,16 +69,7 @@ export const GridLayout = ({
       }
     }
     return peers;
-  }, [
-    isInsetEnabled,
-    whiteboard,
-    activeScreensharePeerId,
-    localPeerRole,
-    localPeerID,
-    prominentRoles,
-    peers,
-    pinnedTrack,
-  ]);
+  }, [isInsetEnabled, activeScreensharePeerId, localPeerRole, localPeerID, prominentRoles, peers, pinnedTrack]);
   const vanillaStore = useHMSVanillaStore();
   const [sortedPeers, setSortedPeers] = useState(updatedPeers);
   const peersSorter = useMemo(() => new PeersSorter(vanillaStore), [vanillaStore]);
@@ -109,17 +99,6 @@ export const GridLayout = ({
     return (
       <VideoTileContext.Provider value={tileLayout}>
         <ScreenshareLayout
-          peers={sortedPeers}
-          onPageSize={setPageSize}
-          onPageChange={setMainPage}
-          edgeToEdge={edge_to_edge}
-        />
-      </VideoTileContext.Provider>
-    );
-  } else if (whiteboard?.open) {
-    return (
-      <VideoTileContext.Provider value={tileLayout}>
-        <WhiteboardLayout
           peers={sortedPeers}
           onPageSize={setPageSize}
           onPageChange={setMainPage}
