@@ -82,7 +82,7 @@ export const Footer = ({
         {isMobile ? <LeaveRoom screenType={screenType} /> : null}
         <AudioVideoToggle />
         {/* {!isMobile && elements.virtual_background ? <VBToggle /> : null} */}
-        {role?.name === 'terp-en' || role?.name === 'ter-fr' ? (
+        {role?.name === 'terp-en' || role?.name === 'terp-fr' ? (
           <>
             <Int2EnButton />
             <Int2FrButton />
