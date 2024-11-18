@@ -33,8 +33,6 @@ import { useIsSidepaneTypeOpen, useSidepaneToggle } from '../AppData/useSidepane
 import { useShowPolls } from '../AppData/useUISettings';
 // @ts-ignore: No implicit Any
 import { SIDE_PANE_OPTIONS } from '../../common/constants';
-// import EnButton from "./Languages/En";
-// import FrButton from "./Languages/Fr";
 
 export const Footer = ({
   screenType,
@@ -84,18 +82,12 @@ export const Footer = ({
         {isMobile ? <LeaveRoom screenType={screenType} /> : null}
         <AudioVideoToggle />
         {/* {!isMobile && elements.virtual_background ? <VBToggle /> : null} */}
-        {role?.name === 'interpreter-en' || role?.name === 'interpreter-fr' ? (
+        {role?.name === 'terp-en' || role?.name === 'ter-fr' ? (
           <>
             <Int2EnButton />
             <Int2FrButton />
           </>
         ) : null}
-        {/* {role?.name === "listener-en" || role?.name === "listener-fr" ? (
-          <>
-            <EnButton />
-            <FrButton />
-          </>
-        ) : null} */}
       </AppFooter.Left>
       <AppFooter.Center
         css={{
