@@ -14,7 +14,7 @@ const Left = styled(Flex, {
   alignItems: 'center',
   position: 'absolute',
   left: '$10',
-  gap: '$8',
+  gap: '$2',
   '@md': {
     position: 'unset',
     justifyContent: 'center',

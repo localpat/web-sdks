@@ -73,7 +73,7 @@ export const Footer = ({
     >
       <AppFooter.Left
         css={{
-          gap: '$9',
+          gap: '$2',
           '@md': {
             w: 'unset',
             p: '0',
@@ -93,7 +93,7 @@ export const Footer = ({
       </AppFooter.Left>
       <AppFooter.Center
         css={{
-          gap: '$9',
+          gap: '$2',
           '@md': {
             w: 'unset',
             gap: '$10',
