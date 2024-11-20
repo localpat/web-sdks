@@ -69,6 +69,9 @@ export const Footer = ({
           // To prevent it from showing over the sidepane if chat type is not overlay
           zIndex: isOverlayChat && isChatOpen ? 20 : 1,
         },
+        '@sm': {
+          gap: '$2',
+        },
       }}
     >
       <AppFooter.Left
@@ -77,6 +80,9 @@ export const Footer = ({
           '@md': {
             w: 'unset',
             p: '0',
+            gap: '$4',
+          },
+          '@sm': {
             gap: '$2',
           },
         }}
@@ -98,6 +104,9 @@ export const Footer = ({
             w: 'unset',
             gap: '$2',
           },
+          '@sm': {
+            gap: '$',
+          },
         }}
       >
         {isMobile ? (
@@ -117,7 +126,17 @@ export const Footer = ({
           </>
         )}
       </AppFooter.Center>
-      <AppFooter.Right>
+      <AppFooter.Right
+        css={{
+          gap: '$4',
+          '@md': {
+            gap: '$4',
+          },
+          '@sm': {
+            gap: '$2',
+          },
+        }}
+      >
         {/* <WhiteboardToggle /> */}
         {showPolls && <PollsToggle />}
         {!isMobile && elements?.chat && <ChatToggle />}
