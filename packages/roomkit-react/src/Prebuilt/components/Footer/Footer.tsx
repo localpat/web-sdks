@@ -61,6 +61,7 @@ export const Footer = ({
     <AppFooter.Root
       css={{
         flexWrap: 'nowrap',
+        gap: '$9',
         '@md': {
           justifyContent: 'center',
           gap: '$10',
@@ -72,6 +73,7 @@ export const Footer = ({
     >
       <AppFooter.Left
         css={{
+          gap: '$9',
           '@md': {
             w: 'unset',
             p: '0',
@@ -91,6 +93,7 @@ export const Footer = ({
       </AppFooter.Left>
       <AppFooter.Center
         css={{
+          gap: '$9',
           '@md': {
             w: 'unset',
             gap: '$10',

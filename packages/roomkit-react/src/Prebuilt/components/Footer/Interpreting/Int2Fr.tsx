@@ -13,7 +13,7 @@ const Int2FrButton = () => {
   return (
     <Tooltip key="terp-fr" title="Interprétation vers le français">
       <IconButton onClick={changeRole} className="w-auto">
-        <div className="text-xs text-slate-200 rounded-lg bg-red-600">FR</div>
+        <div className="text-xs text-slate-200 rounded-lg">FR</div>
       </IconButton>
     </Tooltip>
   );

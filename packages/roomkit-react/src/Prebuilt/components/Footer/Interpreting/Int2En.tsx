@@ -13,7 +13,7 @@ const Int2EnButton = () => {
   return (
     <Tooltip key="terp-en" title="Interpreting to English">
       <IconButton onClick={changeRole}>
-        <div className="text-xs text-slate-200 rounded-lg active:bg-red-600">EN</div>
+        <div className="text-xs text-slate-200 rounded-lg">EN</div>
       </IconButton>
     </Tooltip>
   );
